@@ -1,11 +1,12 @@
-const logger = require('chip-log')
+import express from 'express'
+import log from 'chip-log'
+import router from './router.js'
 
-module.exports = scratchFn
-module.exports.benchmarkable = () => scratchFn()
+const { context, request } = log.middleware
 
-function scratchFn () {
-  logger.info()
-}
+const app = express()
+app.use(context())
+app.use(request())
+app.use(router('./routing.yml'))
 
-logger.info('Init')
-scratchFn()
+app.listen(3000, () => log.info('Starte d'))

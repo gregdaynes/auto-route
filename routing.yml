@@ -1,0 +1,5 @@
+functions:
+  useless:
+    handler: 'routes/todos.js'
+    path: '/todos/:id'
+    method: 'get'
